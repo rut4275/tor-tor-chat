@@ -1,0 +1,595 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+app-root, .app-container, .app-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container {
+  width: 100%;
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  font-family: var(--font-family, system-ui, -apple-system, sans-serif);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border: 5px solid #424040; /* צבע ורוחב המסגרת */
+}
+
+.chat-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-icon {
+  font-size: 24px;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.minimize-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.minimize-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-buttons {
+  margin-top: 8px;
+  display: grid;
+  gap: 8px;
+  max-width: 70%;
+}
+
+.product-button {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-bottom-left-radius: 4px;
+}
+
+.product-button:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-button:active {
+  transform: scale(0.98);
+}
+
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  margin-bottom: 4px;
+  position: relative;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.user-message {
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid #e5e7eb;
+}
+
+.message-content {
+  margin-bottom: 4px;
+}
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.sending-indicator {
+  margin-top: 8px;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #6b7280;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.dots span:nth-child(1) { animation-delay: -0.32s; }
+.dots span:nth-child(2) { animation-delay: -0.16s; }
+
+
+.chat-input-credit {
+  display: flex;
+  flex-direction: column; /* כך שהקרדיט תמיד יהיה מתחת */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6); 
+  border-top: 1px solid #e5e7eb;
+  z-index: 10;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  padding-bottom: 0px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0); 
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 24px;
+  border: 1px solid #ccc;
+  margin-right: 8px;
+  height: 40px;
+}
+
+.chat-input button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #7dbdbd;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-credit {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+   /* padding: 4px 0 8px; */
+}
+.chat-credit a {
+  color: #007bff;
+  text-decoration: none;
+}
+.message-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 24px;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  margin-right: 8px;
+  transition: border-color 0.2s;
+}
+
+.message-input:focus {
+  border-color: var(--primary-color);
+}
+
+.message-input:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.send-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.send-button:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+/* סגנון כללי להודעות */
+.message {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  word-wrap: break-word;
+}
+
+/* הודעות משתמש לעומת הודעות בוט */
+.user-message {
+  align-self: flex-end;
+}
+.bot-message {
+  align-self: flex-start;
+}
+
+/* תוכן טקסט רגיל */
+.message-content {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* אינדיקציה לשליחה */
+.sending-indicator .dots span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 1px;
+  background-color: #bbb;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+.sending-indicator .dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.sending-indicator .dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+/* כפתורים */
+.product-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+.product-button {
+  margin: 4px 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+.product-button:hover {
+  filter: brightness(0.95);
+}
+
+/* תמונה */
+.message-image {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+/* כרטיס */
+.message-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+}
+.card-image {
+  width: 100%;
+  display: block;
+}
+.card-title {
+  font-weight: bold;
+  padding: 8px 12px 4px;
+  font-size: 14px;
+}
+.card-description {
+  padding: 0 12px 8px;
+  font-size: 13px;
+  color: #555;
+}
+.card-button {
+  display: block;
+  text-align: center;
+  margin: 8px 12px 12px;
+  padding: 6px 10px;
+  background-color: #3b82f6; /* כחול ברירת מחדל */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.card-button:hover {
+  background-color: #2563eb;
+}
+
+/* זמן ההודעה */
+.message-time {
+  font-size: 10px;
+  color: #999;
+  margin-top: 4px;
+  text-align: right;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Desktop styles */
+@media (min-width: 600px) {
+  .chat-container {
+    width: 12cm;
+    height: 100vh;
+    /* max-height: 80vh; */
+    margin: 0 auto;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .chat-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  .message {
+    max-width: 85%;
+  }
+  
+  .chat-header {
+    padding: 12px 16px;
+  }
+  
+  .chat-messages {
+    padding: 12px;
+    padding-bottom: 100px; /* Increased padding for mobile */
+  }
+  
+  .chat-input {
+    padding: 12px;
+    height: 72px; /* Fixed height for mobile */
+  }
+  
+  .message-input {
+    height: 48px; /* Ensure consistent input height */
+  }
+  
+  .send-button {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0; /* Prevent button from shrinking */
+  }
+}
+
+@media (max-width: 600px) {
+  .message {
+    max-width: 100%;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .product-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .message-card {
+    margin-top: 6px;
+  }
+
+  .card-title {
+    font-size: 13px;
+    padding: 6px 10px 4px;
+  }
+
+  .card-description {
+    font-size: 12px;
+    padding: 0 10px 6px;
+  }
+
+  .card-button {
+    font-size: 12px;
+    margin: 6px 10px 10px;
+    padding: 5px 8px;
+  }
+
+  .message-time {
+    font-size: 9px;
+  }
+
+  .sending-indicator .dots span {
+    width: 5px;
+    height: 5px;
+  }
+}
+.send-button ,.mic-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s;
+  margin-left: 8px;
+}
+
+.chat-input-with-mic {
+  flex: 1; /* זה חשוב – מאפשר לאינפוט להתרחב */
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.message-input {
+  width: 100%;
+  padding-right: 36px;  /* // מקום לאייקון מימין */
+  padding-left: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 36px;
+} 
+
+.mic-inside {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* כל הגובה של המסך */
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.multi-select-container {
+  margin-top: 8px;
+}
+
+.selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.tag {
+  background: #e0e0e0;
+  border-radius: 12px;
+  padding: 4px 8px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.tag button {
+  background: transparent;
+  border: none;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.multi-select-options button {
+  margin: 2px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.multi-select-options button.selected {
+  background-color: #3b82f6;
+  color: #fff;
+}

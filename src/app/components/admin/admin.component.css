@@ -1,0 +1,369 @@
+.admin-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  direction: rtl;
+}
+
+.admin-panel {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ebebeb;
+  position: sticky;
+  top: 0;
+  margin-bottom: 8px;
+  z-index: 10;
+}
+
+.admin-header h2 {
+  margin: 0;
+  color: #1f2937;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+  padding: 0px;
+  background-color: #f9fafb00;
+  border-radius: 6px;
+  position: absolute;
+  left: 0;
+}
+
+.save-btn {
+  display: fl;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  }
+
+.save-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.reset-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reset-btn:hover {
+  background-color: #dc2626;
+}
+
+.auth-section {
+  padding: 40px;
+  text-align: center;
+}
+
+.auth-section h3 {
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.auth-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.auth-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.auth-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.admin-content {
+  padding: 20px;
+}
+
+.settings-section,
+.design-section,
+.embed-section,
+.credit-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+}
+
+.settings-section h3,
+.design-section h3,
+.embed-section h3,
+.credit-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.setting-group {
+  margin-bottom: 15px;
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.setting-input,
+.setting-select,
+.setting-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.setting-input:focus,
+.setting-select:focus,
+.setting-textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.setting-textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.color-input {
+  width: 100%;
+  height: 40px;
+  padding: 2px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.setting-checkbox {
+  width: auto;
+  margin-right: 8px;
+}
+
+.setting-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.setting-group input[disabled] {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}
+
+.embed-code {
+  width: 100%;
+  height: 200px;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 12px;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.copy-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: #059669;
+}
+
+@media (max-width: 768px) {
+  .admin-panel {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .admin-header {
+    padding: 15px;
+  }
+  
+  .admin-content {
+    padding: 15px;
+  }
+  
+  .color-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+}
+.collection-section {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.setting-group {
+  margin-bottom: 1rem;
+}
+.setting-group-question {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+
+.setting-input, .setting-textarea, .setting-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.setting-textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+.message-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.drag-handle {
+  cursor: grab;
+  font-size: 18px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: #999;
+  margin-bottom: 5px;
+  margin-right: 8px;
+}
+
+.setting-input, .setting-select {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-btn, .remove-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background-color: #e74c3c;
+  margin-top: 4px;
+}
+
+.add-btn {
+  margin-top: 8px;
+}
+
+.cdk-drag-preview {
+  transform: scale(0.5); /* מעט יותר קטן */
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  text-align: right;
+  background-color: #ffffff65;
+}
+.cdk-drag-placeholder {
+  opacity: 0.2;
+  border: 2px dashed #999;
+  border-radius: 8px;
+  background: transparent;
+
+}
